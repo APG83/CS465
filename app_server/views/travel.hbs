@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Dive Sites - Bhaccasyoniztas Beach Resort Website Template</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Dive Sites - Bhaccasyoniztas Beach Resort Website Template</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="background">
-		<div id="page">
+    <div id="background">
+        <div id="page">
 
-			{{> header }}
+            {{> header }}
 
-			<div id="contents">
-				<div class="box">
-					<div>
-						<div class="body">
-							<h1>Travel</h1>
+            <div id="contents">
+                <div class="box">
+                    <div>
+                        <div class="body">
+                            <h1>Travel</h1>
 
-							<ul id="sites">
+                            <ul id="sites">
 
-								{{#each trips}}
+                                {{#each trips}}
 
-								<li>
-									<a href="/travel">
-										<img src="images/{{this.image}}" alt="Img">
-									</a>
+                                <li>
+                                    <a href="/api/trips/{{code}}">
+                                        <img src="/images/{{image}}" alt="Img">
+                                    </a>
 
-									<h2>
-										<a href="/travel">{{this.name}}</a>
-									</h2>
+                                    <h2>
+                                        <a href="/api/trips/{{code}}">{{name}}</a>
+                                    </h2>
 
-									<p>{{this.description}}</p>
-								</li>
+                                    <p>{{description}}</p>
+                                </li>
 
-								{{/each}}
+                                {{/each}}
 
-							</ul>
+                            </ul>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		{{> footer }}
+        {{> footer }}
 
-	</div>
+    </div>
 </body>
 </html>
