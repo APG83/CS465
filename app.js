@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
@@ -15,6 +16,9 @@ var handlebars = require('hbs');
 require('./app_api/models/db');
 
 var app = express();
+
+// Enable CORS
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -33,6 +37,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/travel', travelRouter);
+
+// Enable additional HTTP methods for API requests
+app.use('/api', (req, res, next) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
+
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler

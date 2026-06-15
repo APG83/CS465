@@ -3,14 +3,16 @@ const router = express.Router();
 
 const tripsController = require('../controllers/trips');
 
-// Single trip route
-router
-    .route('/trips/:tripCode')
-    .get(tripsController.tripsFindByCode);
-
 // All trips route
 router
-    .route('/trips')
-    .get(tripsController.tripsList);
+  .route('/trips')
+  .get(tripsController.tripsList)
+  .post(tripsController.tripsAddTrip);
+
+// Single trip route
+router
+  .route('/trips/:tripCode')
+  .get(tripsController.tripsFindByCode)
+  .put(tripsController.tripsUpdateTrip);
 
 module.exports = router;
